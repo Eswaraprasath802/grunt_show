@@ -1,0 +1,18 @@
+/*"The document is updated on "05"/"12"/"2025"*/
+body {
+  background-color: orange;
+}
+
+h1 {
+  color: white;
+  text-align: right;
+}
+p {
+  font-family: verdana;
+  font-size: 20px;
+  color: black;
+}
+h2{
+    color: crimson;
+}
+/*# sourceMappingURL=style.css.map */
