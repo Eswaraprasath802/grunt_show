@@ -23,19 +23,24 @@ module.exports = function (grunt) {
                 dest: 'dist/app.js',
 
             },
+            scss: {
+                src: ['../scss/**/*.scss'],
+                dest: 'dist/style.scss',
+            },
+            
         },
         cssmin: {
             options: {
                 mergeIntoShorthands: false,
                 roundingPrecision: -1
             },
-            target: {
+            css: {
                 files: {
-                    '../../htdocs/css/style.min.css': ['dist/style.css']
+                    '../../htdocs/css/style.min.css': ['dist/style.css'],
                 }
-            }
-
+            },
         },
+        
         copy: {
             jquery: {
                 files: [
@@ -49,6 +54,16 @@ module.exports = function (grunt) {
                 ],
             },
         },
+        sass: {                             
+            dist: {                          
+                options: {                     
+                    style: 'expanded'
+                },
+                files: {                         
+                    '../../htdocs/css/style.css': 'dist/style.scss',  
+                }
+            }
+        },
         uglify: {
             my_target: {
                 options: {
@@ -59,6 +74,7 @@ module.exports = function (grunt) {
                 },
             },
         },
+
         watch: {
             css: {
                 files: ['../css/**/*.css'],
@@ -70,6 +86,13 @@ module.exports = function (grunt) {
             js: {
                 files: ['../js/**/*.js'],
                 tasks: ['concat:js', 'uglify', 'obfuscator'],
+                options: {
+                    spawn: false,
+                },
+            },
+            scss: {
+                files: ['../scss/**/*.scss'],
+                tasks: ['concat:scss', 'scss'],
                 options: {
                     spawn: false,
                 },
@@ -86,7 +109,6 @@ module.exports = function (grunt) {
             },
             task1: {
                 options: {
-                    // options for each sub task
                 },
                 files: {
                     '../../htdocs/js/app.o.js': [
@@ -105,6 +127,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-obfuscator-4');
-    grunt.registerTask('default', ['copy', 'concat', 'cssmin', 'uglify', 'obfuscator', 'watch']);
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.registerTask('css', ['concat:css', 'cssmin', 'sass']);
+    grunt.registerTask('js', ['concat:js', 'uglify', 'obfuscator']);
+    grunt.registerTask('default', ['copy', 'concat', 'cssmin', 'sass', 'uglify', 'obfuscator', 'watch']);
 
 };

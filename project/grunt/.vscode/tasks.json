@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "grunt",
+			"problemMatcher": [],
+			"label": "npm: grunt",
+			"detail": "cd /home/eswaraprasath/grunt_show/project/grunt && grunt"
+		}
+	]
+}

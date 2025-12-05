@@ -1,0 +1,15 @@
+/*"The document is updated on "05"/"12"/"2025"*/
+.indev h1 {
+  color: green;
+}
+.indev p {
+  color: darkcyan;
+}
+.indev .inindev h1 {
+  color: green;
+}
+.indev .inindev p {
+  color: darkcyan;
+}
+
+/*# sourceMappingURL=style.css.map */
