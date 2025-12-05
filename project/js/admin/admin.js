@@ -1,0 +1,1 @@
+$("p").html("This is run by admin.js")
